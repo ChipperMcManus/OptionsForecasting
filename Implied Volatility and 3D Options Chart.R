@@ -3,7 +3,7 @@
 ################# IMPLIED VOLATILITY CALCS ######################
 library(RQuantLib)
 
-# Define the parameters for the Black-Scholes option pricing model
+# Define parameters for Black-Scholes model
 option_type <- "call"  # "put" for put options
 underlying_price <- 491.59
 strike_price <- 490
@@ -64,12 +64,11 @@ for(i in 1:nrow(options_data)) {
 }
 
 
-# ... [previous code to calculate options_data] ...
-
-# Convert dates to a numeric format for plotting
+# Convert dates to a numeric format for plot
 options_data$DateNumeric <- as.numeric(options_data$Date)
 
 # Create a list of custom tick text labels corresponding to the numeric dates
+                        # change "day" to "week" for better looking graph
 date_ticks <- data.frame(
   DateNumeric = as.numeric(seq(start_date, expiry_date, by="day")),
   DateLabel = as.character(seq(start_date, expiry_date, by="day"))
@@ -83,5 +82,5 @@ plot <- plot_ly(data = options_data, x = ~DateNumeric, y = ~Price, z = ~Value, t
                       yaxis = list(title = 'Underlying SPY Price'),
                       zaxis = list(title = 'Theoretical Option Value')))
 
-# Render the plot
+#Show plot
 plot

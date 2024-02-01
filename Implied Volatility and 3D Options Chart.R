@@ -36,7 +36,6 @@ if (is.na(implied_vol)) {
 
 ###################### OPTION FORECASTING ######################
 library(RQuantLib)
-install.packages("plotly")
 library(plotly)
 
 # Parameters # Assuming no dividends
